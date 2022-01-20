@@ -1,16 +1,18 @@
 import React from "react";
 import classNames from 'classnames/bind';
 import InterviewerListItem from "./InterviewerListItem";
-import styles from "./InterviewerList.scss";
+import "./InterviewerList.scss";
 
 export default function InterviewerList(props) {
 console.log(props.selected)
   const Interviewers = props.interviewers;
   const parsedInterviewers = Interviewers.map((Interviewer, index)  => 
-    <InterviewerListItem  key={Interviewer.id} 
-    {...Interviewer} 
-    selected={Interviewers[index].name === props.Interviewer} 
-    setInterviewer={props.setInterviewer}  />);
+    <InterviewerListItem 
+      key={Interviewer.id} 
+      {...Interviewer} 
+      selected={Interviewers[index].id === props.value} 
+      setInterviewer={props.setInterviewer}  
+    />);
 
 
   //   const dayClass = classNames("interviewers__list", {

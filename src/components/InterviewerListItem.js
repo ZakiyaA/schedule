@@ -7,16 +7,16 @@ export default function InterviewerListItem(props) {
   // let dayClass="interviewers__item"
   // if (props.selected) dayClass = 'interviewers__item--selected';
 
-//   const dayClass = classNames("interviewers__item", {
-//     "interviewers__item--selected": props.selected,
+  const InterviewerClass = classNames("interviewers__list", {
+    " interviewers__item--selected": props.selected,
 
-//  });
- let name = "";
- let InterviewerClass = 'interviewers__list';
- if (props.selected) { 
-  InterviewerClass += 'interviewers__selected';
-  name = props.name;
- }
+ });
+ 
+//  let InterviewerClass = 'interviewers__list';
+//  if (props.selected) { 
+//   InterviewerClass += ' interviewers__item--selected';
+  
+//  }
   return (
     <li className={InterviewerClass} onClick={handleClick}>
       <img
@@ -24,7 +24,7 @@ export default function InterviewerListItem(props) {
       src={props.avatar}
       alt={props.name}
       />
-      {name}
+      {props.selected && props.name}
     </li>   
     );
 
