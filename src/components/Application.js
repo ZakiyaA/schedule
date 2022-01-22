@@ -1,25 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState} from 'react';
+import axios from 'axios';
 import DayList from "./DayList";
 import "components/Application.scss";
 import Appointment from "components/Appointment"; 
-const days = [
-  {
-    id: 1,
-    name: "Monday",
-    spots: 2,
-  },
-  {
-    id: 2,
-    name: "Tuesday",
-    spots: 5,
-  },
-  {
-    id: 3,
-    name: "Wednesday",
-    spots: 0,
-  },
-];
-//////////// Appointment Data
+
 const appointments = [
   {
     id: 1,
@@ -63,8 +47,15 @@ const appointments = [
 
 
 export default function Application(props) {
-  const [day, setDay] = useState(days.name);
-  // console.log(day, setDay);
+  const [days, setDays] = useState([]);
+  useEffect(() => {
+    // GET request using axios inside useEffect React hook
+    axios.get('http://localhost:8001/api/days')
+        .then(response => setDays(response.data))
+        .catch((error) => console.log(error.message));
+
+// empty dependency array means this effect will only run once (like componentDidMount in classes)
+}, []);
   const appointmentsList = appointments.map(appointment =>    
     <Appointment 
         key={appointment.id}
@@ -83,8 +74,8 @@ export default function Application(props) {
         <div>
           <DayList
             days={days}
-            value={day}
-            onChange={setDay}
+            value={days}
+            onChange={setDays}
           />
       </div>
 
