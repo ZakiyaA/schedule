@@ -3,29 +3,35 @@ import axios from 'axios';
 import DayList from "./DayList";
 import "components/Application.scss";
 import Appointment from "components/Appointment"; 
-
-
-
+// import getAppointmentsForDay from "/home/zakiya/lighthouse/w7/schedule/src/helpers/selector.js"
+import  getAppointmentsForDay  from "../helpers/selector.js";
 export default function Application() {
   
   const setDay = day => setState({ ...state, day });
-  const setDays = (days) => setState(prev => ({ ...prev, days }));
+  // const setDays = (days) => setState(prev => ({ ...prev, days }));
   const [state, setState] = useState({
     day: "Monday",
     days: [],
     // you may put the line below, but will have to remove/comment hardcoded appointments variable
     appointments: {}
   });
-  const dailyAppointments = [];
+  
 
   useEffect(() => {
     // GET request using axios inside useEffect React hook
-    axios.get('http://localhost:8001/api/days')
-        .then(response => setDays(response.data))
-        .catch((error) => console.log(error.message));
+    Promise.all([
+      axios.get('http://localhost:8001/api/days'),
+      axios.get('http://localhost:8001/api/appointments'),
+      axios.get('http://localhost:8001/api/interviewers')
+    ]).then((all) => {
+      const [days, appointments, interviewers] = all;
+      setState(prev => ({...prev, days: days.data, appointments: appointments.data, interviewers: interviewers.data }));
+      
+    });
 
 // empty dependency array means this effect will only run once (like componentDidMount in classes)
 }, []);
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
   const appointmentsList = dailyAppointments.map(appointment =>    
     <Appointment 
         key={appointment.id}
