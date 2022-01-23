@@ -4,7 +4,8 @@ import DayList from "./DayList";
 import "components/Application.scss";
 import Appointment from "components/Appointment"; 
 // import getAppointmentsForDay from "/home/zakiya/lighthouse/w7/schedule/src/helpers/selector.js"
-import  getAppointmentsForDay  from "../helpers/selector.js";
+import  {getAppointmentsForDay, getInterview}  from "../helpers/selector.js";
+
 export default function Application() {
   
   const setDay = day => setState({ ...state, day });
@@ -31,12 +32,20 @@ export default function Application() {
 
 // empty dependency array means this effect will only run once (like componentDidMount in classes)
 }, []);
+  // console.log(state.interviewers);
   const dailyAppointments = getAppointmentsForDay(state, state.day);
-  const appointmentsList = dailyAppointments.map(appointment =>    
-    <Appointment 
+  const appointmentsList = dailyAppointments.map(appointment =>  { 
+  const interview = getInterview(state, appointment.interview);
+
+    return (
+      <Appointment
         key={appointment.id}
-        {...appointment} 
-    />)
+        id={appointment.id}
+        time={appointment.time}
+        interview={interview}
+      />
+    );
+  });
   return (
     <main className="layout">
       <section className="sidebar">

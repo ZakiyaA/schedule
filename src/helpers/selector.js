@@ -1,17 +1,20 @@
-export default function getAppointmentsForDay(state, day) {
-  //... returns an array of appointments for that day
-  // console.log(state.days[0].id)
+export function getAppointmentsForDay(state, day) {
   const daysArray = state.days.filter(dayArray => dayArray.name === day);
-  // console.log("days", daysArray)
   let appointmentArray = daysArray.map( (item) => item.appointments);
   appointmentArray = appointmentArray.flat();
-  // console.log(appointmentArray)
   const appointments = [];
   for (let appointment of appointmentArray) {
     if (appointment ===  state.appointments[appointment.toString()].id)
     appointments.push(state.appointments[appointment]);
   }
-  console.log("result", appointments)
   return appointments;
 };
+
+export function getInterview(state, interview) {
+  if (!interview) {
+    return null
+  }
+  let interviewer = state.interviewers[interview.interviewer]
+  return { ...interview, interviewer }
+}
 
