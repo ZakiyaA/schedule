@@ -3,7 +3,6 @@ import axios from 'axios';
 import DayList from "./DayList";
 import "components/Application.scss";
 import Appointment from "components/Appointment"; 
-// import getAppointmentsForDay from "/home/zakiya/lighthouse/w7/schedule/src/helpers/selector.js"
 import  {getAppointmentsForDay, getInterview}  from "../helpers/selector.js";
 
 export default function Application() {
