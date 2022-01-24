@@ -3,7 +3,7 @@ import axios from 'axios';
 import DayList from "./DayList";
 import "components/Application.scss";
 import Appointment from "components/Appointment"; 
-import  {getAppointmentsForDay, getInterview}  from "../helpers/selector.js";
+import  {getAppointmentsForDay, getInterview, getInterviewersForDay}  from "../helpers/selector.js";
 
 export default function Application() {
   
@@ -32,6 +32,8 @@ export default function Application() {
 // empty dependency array means this effect will only run once (like componentDidMount in classes)
 }, []);
   // console.log(state.interviewers);
+
+  const interviewers = getInterviewersForDay(state, state.day)
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const appointmentsList = dailyAppointments.map(appointment =>  { 
   const interview = getInterview(state, appointment.interview);
@@ -42,6 +44,7 @@ export default function Application() {
         id={appointment.id}
         time={appointment.time}
         interview={interview}
+        interviewers={interviewers}
       />
     );
   });

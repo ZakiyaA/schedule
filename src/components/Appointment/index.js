@@ -4,7 +4,7 @@ import Show from "components/Appointment/Show.js";
 import Empty from "components/Appointment/Empty.js";
 import Form from "components/Appointment/Form.js";
 import useVisualMode from "hooks/useVisualMode";
-import  {getInterviewersForDay}  from "/home/zakiya/lighthouse/w7/schedule/src/helpers/selector.js"
+
 
 export default function Appointment(props) {
   console.log(props)
@@ -32,7 +32,7 @@ export default function Appointment(props) {
       {mode === CREATE && (
         <Form 
         
-          interviewers={[]}
+          interviewers={props.interviewers}
           onCancel = {back}
           // // onSave = {save}
         />
