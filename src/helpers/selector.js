@@ -19,7 +19,7 @@ export function getInterviewersForDay(state, day) {
     if ( state.interviewers[interviewer])
     interviewers.push(state.interviewers[interviewer]);
   }
-  console.log(interviewers)
+  // console.log(interviewers)
   return interviewers;
 };
 
@@ -31,5 +31,7 @@ export function getInterview(state, interview) {
   }
   let interviewer = state.interviewers[interview.interviewer]
   return { ...interview, interviewer }
-}
+};
+
+
 

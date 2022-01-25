@@ -6,7 +6,7 @@ import Appointment from "components/Appointment";
 import  {getAppointmentsForDay, getInterview, getInterviewersForDay}  from "../helpers/selector.js";
 
 export default function Application() {
-  
+
   const setDay = day => setState({ ...state, day });
   // const setDays = (days) => setState(prev => ({ ...prev, days }));
   const [state, setState] = useState({
@@ -15,7 +15,58 @@ export default function Application() {
     // you may put the line below, but will have to remove/comment hardcoded appointments variable
     appointments: {}
   });
+
+
+  function bookInterview(id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    // setState({ ...state, appointments});
+    console.log(id, interview);
+    console.log("123")
+    return (
+    axios.put(`/api/appointments/${id}`, {interview})
+    .then(response => {   
+      console.log("abc")
+      setState((prev) => ({...prev, appointments}));
+console.log("Status: ", response.status);
+console.log("Data: ", response.data);
+})
+    .catch((err) => console.log(err.message))
+    )
+  };
+
+
+
+// .then(response => {setState((prev) => ({...prev, appointments}));
+// console.log("Status: ", response.status);
+// console.log("Data: ", response.data);
+// })
+
+
+  const interviewers = getInterviewersForDay(state, state.day)
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
+  const appointmentsList = dailyAppointments.map(appointment =>  { 
+  const interview = getInterview(state, appointment.interview);
   
+ 
+    return (
+      <Appointment
+        key={appointment.id}
+        id={appointment.id}
+        time={appointment.time}
+        interview={interview}
+        interviewers={interviewers}
+        bookInterview={bookInterview}
+      
+      />
+    );
+  });
 
   useEffect(() => {
     // GET request using axios inside useEffect React hook
@@ -31,23 +82,6 @@ export default function Application() {
 
 // empty dependency array means this effect will only run once (like componentDidMount in classes)
 }, []);
-  // console.log(state.interviewers);
-
-  const interviewers = getInterviewersForDay(state, state.day)
-  const dailyAppointments = getAppointmentsForDay(state, state.day);
-  const appointmentsList = dailyAppointments.map(appointment =>  { 
-  const interview = getInterview(state, appointment.interview);
-
-    return (
-      <Appointment
-        key={appointment.id}
-        id={appointment.id}
-        time={appointment.time}
-        interview={interview}
-        interviewers={interviewers}
-      />
-    );
-  });
   return (
     <main className="layout">
       <section className="sidebar">
@@ -71,11 +105,8 @@ export default function Application() {
         src="images/lhl.png"
         alt="Lighthouse Labs"
       />
-
-      
       </section>
       <section className="schedule">
-  
       {appointmentsList}
       <Appointment key="last" time="5pm" />
       </section>
