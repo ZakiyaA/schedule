@@ -34,20 +34,28 @@ export default function Application() {
     .then(response => {   
       console.log("abc")
       setState((prev) => ({...prev, appointments}));
-console.log("Status: ", response.status);
-console.log("Data: ", response.data);
-})
+      console.log("Status: ", response.status);
+      console.log("Data: ", response.data);
+      })
     .catch((err) => console.log(err.message))
     )
+  };  
+
+  
+  function cancelInterview(id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    return axios
+    .delete(`/api/appointments/${id}`)
+    .then(() => setState((prev) => ({...prev, appointments}))); 
+
   };
-
-
-
-// .then(response => {setState((prev) => ({...prev, appointments}));
-// console.log("Status: ", response.status);
-// console.log("Data: ", response.data);
-// })
-
 
   const interviewers = getInterviewersForDay(state, state.day)
   const dailyAppointments = getAppointmentsForDay(state, state.day);
@@ -63,6 +71,7 @@ console.log("Data: ", response.data);
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       
       />
     );
