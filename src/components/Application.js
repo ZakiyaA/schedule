@@ -28,16 +28,18 @@ export default function Application() {
     };
     // setState({ ...state, appointments});
     console.log(id, interview);
-    console.log("123")
     return (
     axios.put(`/api/appointments/${id}`, {interview})
     .then(response => {   
-      console.log("abc")
+      // if (process.env.TEST_ERROR) {
+      //   setTimeout(() => response.status(500).json({}), 1000);
+      //   return;
+      // }
       setState((prev) => ({...prev, appointments}));
       console.log("Status: ", response.status);
       console.log("Data: ", response.data);
       })
-    .catch((err) => console.log(err.message))
+    // .catch((err) => console.log(err.message))
     )
   };  
 
@@ -45,8 +47,9 @@ export default function Application() {
   function cancelInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
-      interview: { ...interview }
+      interview: null
     };
+
     const appointments = {
       ...state.appointments,
       [id]: appointment
@@ -100,7 +103,7 @@ export default function Application() {
         alt="Interview Scheduler"
         />
         <hr className="sidebar__separator sidebar--centered" />
-        <nav className="sidebar__menu"></nav>
+        
         <div>
           <DayList
             days={state.days}
@@ -108,7 +111,7 @@ export default function Application() {
             onChange={setDay}
           />
       </div>
-
+      <nav className="sidebar__menu"></nav>
         <img
         className="sidebar__lhl sidebar--centered"
         src="images/lhl.png"
