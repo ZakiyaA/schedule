@@ -1,4 +1,5 @@
 # Interview Scheduler
+
 # Behavioural Requirements
   * Interviews can be booked between Monday and Friday.
   * A user can switch between weekdays.
@@ -13,6 +14,15 @@
   * A user is shown a status indicator while asynchronous operations are in progress.
   * When the user presses the close button of the error they are returned to the Form or Show view (skipping Status and Confirm).
   * The application makes API requests to load and persist data. We do not lose data after a browser refresh.
+
+# Final Product
+
+!["Screenshot of Tablets design"](https://github.com/ZakiyaA/schedule/blob/master/docs/Create_Appointment.mkv)
+<!-- !["Screenshot of Desktop Design "](https://github.com/ZakiyaA/tweeter/blob/master/docs/screen-view.png)
+!["Gif of the tweeter page"](https://github.com/ZakiyaA/tweeter/blob/master/docs/Tweeter.gif) -->
+
+
+
 ## Setup
 
 Install dependencies with `npm install`.
