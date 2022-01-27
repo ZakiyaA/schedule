@@ -1,6 +1,6 @@
 import React from "react";
 import "components/DayListItem.scss";
-// import classNames from 'classnames';
+import classNames from 'classnames';
 
 
 export default function DayListItem(props) {
@@ -19,16 +19,19 @@ export default function DayListItem(props) {
     return  spot_remaining;
   };
 
-  let dayClass = 'day-list__item';
-  if (props.selected) dayClass += ' day-list__item--selected';
-  else if (!props.spots) dayClass += 'day-list__item--full';
+  const dayClass = classNames("day-list__item", {
+    "day-list__item--selected": props.selected,
+    "day-list__item--full": props.spots === 0
+  })
 
 
   return (
-    <li className={dayClass} onClick = {handleClick}  selected={props.selected}>
+    <li className={dayClass} onClick = {handleClick}  >
       <h2 className="text--regular">{props.name}</h2> 
       <h3 className="text--light" >{formatSpots(props)} </h3>
     </li>
   );
 }
 
+
+// selected={props.selected}
