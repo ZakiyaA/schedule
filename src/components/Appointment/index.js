@@ -5,7 +5,6 @@ import Show from "components/Appointment/Show.js";
 import Empty from "components/Appointment/Empty.js";
 import Form from "components/Appointment/Form.js";
 import useVisualMode from "hooks/useVisualMode";
-// import { CREATE } from 'react-test-renderer';
 import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
 import Confirm from 'components/Appointment/Confirm';
@@ -25,8 +24,6 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
   
-// console.log(props.interview)
-
   function save(name, interviewer) {
     const interview = {
       student: name,
@@ -35,7 +32,6 @@ export default function Appointment(props) {
     transition(SAVING, true);
     props.bookInterview(props.id, interview)
     .then(() => {
-      console.log("helllllllllllllo");
       transition(SHOW)})
     .catch(error => {
       console.log(error);
@@ -51,7 +47,7 @@ export default function Appointment(props) {
       console.log(error);
       return transition(ERROR_DELETE, true)});
   }
- console.log(mode)
+ console.log("WE ARE TRANSITION TO MODE", mode)
   return(
     <article className="appointment">
       <Header time={props.time}/>
@@ -82,7 +78,3 @@ export default function Appointment(props) {
     
   );
 };
-
-// getInterviewersForDay(props, props.days)
-// {props.interview? <Show   student={props.interview.student} 
-//       interviewers={[props.interview.interviewer]}/> : <Empty/>}

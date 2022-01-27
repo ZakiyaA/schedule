@@ -42,7 +42,7 @@ export default function Application() {
         <div>
           <DayList
             days={state.days}
-            value={state.days}
+            value={state.day}
             onChange={setDay}
           />
       </div>

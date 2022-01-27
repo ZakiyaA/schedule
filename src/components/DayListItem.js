@@ -4,7 +4,6 @@ import classNames from 'classnames';
 
 
 export default function DayListItem(props) {
-  console.log("DayLists", props)
   const handleClick= () => props.setDay(props.name);
   const formatSpots = function(props) {
     const spots = props.spots;
@@ -32,6 +31,3 @@ export default function DayListItem(props) {
     </li>
   );
 }
-
-
-// selected={props.selected}
