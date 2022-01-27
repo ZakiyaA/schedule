@@ -24,7 +24,7 @@
  * Save_Edit Error 
 
 !["Screenshot of Desktop Design "](https://github.com/ZakiyaA/schedule/blob/master/docs/Save_Delete_Error.gif) 
-<!-- !["Gif of the tweeter page"](https://github.com/ZakiyaA/tweeter/blob/master/docs/Tweeter.gif) --> -->
+<!-- !["Gif of the tweeter page"](https://github.com/ZakiyaA/tweeter/blob/master/docs/Tweeter.gif) --> 
 
 
 
