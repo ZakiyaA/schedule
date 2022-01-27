@@ -20,7 +20,7 @@
 
   
 !["Create An Appointment"](https://github.com/ZakiyaA/schedule/blob/master/docs/ezgif.com-gif-maker.gif)
-<!-- !["Screenshot of Desktop Design "](https://github.com/ZakiyaA/tweeter/blob/master/docs/screen-view.png)
+<!-- !["Screenshot of Desktop Design "](https://github.com/ZakiyaA/schedule/blob/master/docs/Save_Delete_Error.gif)
 !["Gif of the tweeter page"](https://github.com/ZakiyaA/tweeter/blob/master/docs/Tweeter.gif) -->
 
 
