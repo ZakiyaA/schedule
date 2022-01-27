@@ -4,7 +4,7 @@ import "components/DayListItem.scss";
 
 
 export default function DayListItem(props) {
-  
+  console.log("DayLists", props)
   const handleClick= () => props.setDay(props.name);
   const formatSpots = function(props) {
     const spots = props.spots;

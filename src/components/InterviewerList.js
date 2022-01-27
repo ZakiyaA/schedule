@@ -2,23 +2,25 @@ import React from "react";
 import classNames from 'classnames/bind';
 import InterviewerListItem from "./InterviewerListItem";
 import "./InterviewerList.scss";
+import PropTypes from 'prop-types';
 
 export default function InterviewerList(props) {
   const Interviewers = props.interviewers;
   const {onChange} = props;
+  // Data Type Validation...................
+  InterviewerList.propTypes = {
+    interviewers: PropTypes.array.isRequired
+  };
+
+
   const parsedInterviewers = Interviewers.map((Interviewer)  => 
     <InterviewerListItem 
       key={Interviewer.id} 
       {...Interviewer} 
       selected={Interviewer.id === props.value} 
-      // setInterviewer={props.setInterviewer} 
       setInterviewer={() => onChange(Interviewer.id)}  
     />);
 
-
-  //   const dayClass = classNames("interviewers__list", {
-  //     "interviewers__selected": props.selected,
-  //  });
 
   let InterviewerClass = 'interviewers__list';
   if (props.selected) InterviewerClass += 'interviewers__selected';
