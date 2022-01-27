@@ -20,8 +20,13 @@
 
 
 !["Create An Appointment"](https://github.com/ZakiyaA/schedule/blob/master/docs/ezgif.com-gif-maker.gif)
+<<<<<<< HEAD
 !["Screenshot of Desktop Design "](https://github.com/ZakiyaA/schedule/blob/master/docs/Save_Delete_Error.gif) 
 <!-- !["Gif of the tweeter page"](https://github.com/ZakiyaA/tweeter/blob/master/docs/Tweeter.gif) --> -->
+=======
+<!-- !["Screenshot of Desktop Design "](https://github.com/ZakiyaA/schedule/blob/master/docs/Save_Delete_Error.gif)
+!["Gif of the tweeter page"](https://github.com/ZakiyaA/tweeter/blob/master/docs/Tweeter.gif) -->
+>>>>>>> 9fbf44d27e8ef9b1b4d7aa183566d68eedd436fc
 
 
 
