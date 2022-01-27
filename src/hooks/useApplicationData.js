@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+import { useEffect, useState} from 'react';
 import axios from 'axios';
 
 export default function useApplicationData() {
@@ -72,7 +72,7 @@ const setDay = day => setState({ ...state, day });
 
   };
   useEffect(() => {
-    // GET request using axios inside useEffect React hook
+    // GET request using axios inside useEffect React hook....
     Promise.all([
       axios.get('http://localhost:8001/api/days'),
       axios.get('http://localhost:8001/api/appointments'),
