@@ -3,7 +3,6 @@ import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
 export default function Form(props){
-  // console.log("propsForm", props);
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
@@ -12,12 +11,15 @@ export default function Form(props){
     setStudent("");
     setInterviewer(null);
   };
-
+  
+   // Call reset and the back function from the Appointments component (index)
   const cancel = function() {
     reset();
     props.onCancel();
   };
+  
 
+  // Check if the form has been filled correctly before saving the data
   function validate() {
     if (student === "") {
       setError("student name cannot be blank");
