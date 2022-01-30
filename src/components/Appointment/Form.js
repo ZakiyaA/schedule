@@ -18,7 +18,6 @@ export default function Form(props){
     props.onCancel();
   };
   
-
   // Check if the form has been filled correctly before saving the data
   function validate() {
     if (student === "") {
