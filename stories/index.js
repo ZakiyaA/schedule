@@ -157,6 +157,8 @@ storiesOf("DayList", module)
       .add("Show", () => <Show 
         student="Lydia Miller-Jones" 
         interviewers={interviewers}
+        interviewer={interviewers[0]}
+
         onEdit={action("onEdit")}
         onDelete={action("onDelete")}
       />)

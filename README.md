@@ -34,22 +34,12 @@
 
 ## Setup
 
-Install dependencies with `npm install`.
-
-## Running Webpack Development Server
-
-```sh
-npm start
-```
-
-## Running Jest Test Framework
-
-```sh
-npm test
-```
-
-## Running Storybook Visual Testbed
-
-```sh
-npm run storybook
-```
+## If you want to run the app locally
+* Fork this repository, then clone your fork of this repository.
+* Go to the scheduler-api repository that contains the database and fork it, then clone your fork of this repository.
+* Install dependencies in both folders (scheduler & shceduler-api) using the npm install command.
+* Open two terminals, one for scheduler and the second for scheduler-api.
+* Run the both servers using the npm start command.
+* Go to http://localhost:8000/ in your browser and tinker with the app.
+* (Optional): Run the Jest Test Framework using npm test in an other terminal.
+* (Optional): Run the Storybook Visual Testbed using npm run storybook in an other terminal.

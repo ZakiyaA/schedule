@@ -1,26 +1,30 @@
+
+// getAppointmentsForDay returns an array of appointment objects for the given day.
+
+// Use the state to return the appointments for a specific day
 export function getAppointmentsForDay(state, day) {
-  const daysArray = state.days.filter(dayArray => dayArray.name === day);
-  let appointmentArray = daysArray.map( (item) => item.appointments);
-  appointmentArray = appointmentArray.flat();
-  const appointments = [];
-  for (let appointment of appointmentArray) {
-    if (state.appointments[appointment.toString()].id)
-    appointments.push(state.appointments[appointment]);
+  const result = [];
+  const dayData = state.days.filter(d => d.name === day)
+
+  if (!dayData[0]) return result;
+  for (const a of dayData[0].appointments) {
+    result.push(state.appointments[a]);
   }
-  return appointments;
+
+  return result;
 };
 
+// Return the interviewers of a specific day
 export function getInterviewersForDay(state, day) {
-  const daysArray = state.days.filter(dayArray => dayArray.name === day);
-  let interviewersArray = daysArray.map( (item) => item.interviewers);
-  interviewersArray = interviewersArray.flat();
-  const interviewers = [];
-  for (let interviewer of interviewersArray) {
-    if ( state.interviewers[interviewer])
-    interviewers.push(state.interviewers[interviewer]);
+  const result = [];
+  const dayData = state.days.filter(d => d.name === day)
+
+  if (!dayData[0]) return result;
+  for (const a of dayData[0].interviewers) {
+    result.push(state.interviewers[a]);
   }
-  // console.log(interviewers)
-  return interviewers;
+  
+  return result;
 };
 
 

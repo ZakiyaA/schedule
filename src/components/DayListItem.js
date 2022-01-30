@@ -17,13 +17,10 @@ export default function DayListItem(props) {
     }
     return  spot_remaining;
   };
-
   const dayClass = classNames("day-list__item", {
     "day-list__item--selected": props.selected,
     "day-list__item--full": props.spots === 0
   })
-
-
   return (
     <li className={dayClass} onClick = {handleClick}  >
       <h2 className="text--regular">{props.name}</h2> 

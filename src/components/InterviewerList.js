@@ -10,7 +10,6 @@ export default function InterviewerList(props) {
   InterviewerList.propTypes = {
     interviewers: PropTypes.array.isRequired
   };
-
   const parsedInterviewers = Interviewers.map((Interviewer)  => 
     <InterviewerListItem 
       key={Interviewer.id} 
