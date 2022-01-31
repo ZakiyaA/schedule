@@ -3,7 +3,7 @@
 ## Setup
 
 ## If you want to run the app locally
-* Fork this repository, then clone your fork of this repository.
+* Fork this repository, https://github.com/lighthouse-labs/scheduler-api then clone your fork of this repository.
 * Go to the scheduler-api repository that contains the database and fork it, then clone your fork of this repository.
 * Install dependencies in both folders (scheduler & shceduler-api) using the npm install command.
 * Open two terminals, one for scheduler and the second for scheduler-api.
